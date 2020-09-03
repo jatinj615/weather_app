@@ -124,3 +124,5 @@ STATIC_URL = '/static/'
 
 ## OpenWeatherMap API Key
 WEATHER_API_KEY = '4db0c9bedeaf4835f556513eacc18fe4'
+CITY_BY_NAME_URL = 'https://api.openweathermap.org/data/2.5/weather'
+CITY_BY_ID_URL = 'https://api.openweathermap.org/data/2.5/group'
