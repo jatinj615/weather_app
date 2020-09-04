@@ -1,1 +1,3 @@
 from .city_serializer import CitySerializer
+from .weather_serializer import WeatherSerializer
+from .city_weather_serializer import CityWeatherSerializer
