@@ -124,5 +124,14 @@ STATIC_URL = '/static/'
 
 ## OpenWeatherMap API Key
 WEATHER_API_KEY = '4db0c9bedeaf4835f556513eacc18fe4'
-CITY_BY_NAME_URL = 'https://api.openweathermap.org/data/2.5/weather'
+SINGLE_CITY_URL = 'https://api.openweathermap.org/data/2.5/weather'
 CITY_BY_ID_URL = 'https://api.openweathermap.org/data/2.5/group'
+
+
+## Celery Settings
+BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = TIME_ZONE
