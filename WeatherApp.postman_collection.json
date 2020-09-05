@@ -1,0 +1,218 @@
+{
+	"info": {
+		"_postman_id": "2043dd82-26c3-4015-827e-199cc414ea65",
+		"name": "WeatherApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List Cities",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/city/?city_name=mumbai&latitude&longitude",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"city",
+						""
+					],
+					"query": [
+						{
+							"key": "city_name",
+							"value": "mumbai"
+						},
+						{
+							"key": "latitude",
+							"value": null
+						},
+						{
+							"key": "longitude",
+							"value": null
+						}
+					]
+				},
+				"description": "List all the cities(without any parameter)\nCan be filtered by City Name or by Latitude and Longitude parameters."
+			},
+			"response": []
+		},
+		{
+			"name": "Create City",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "city_name",
+							"value": "delhi",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/city/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"city",
+						""
+					]
+				},
+				"description": "Create City by providing valid city name (required parameter)"
+			},
+			"response": []
+		},
+		{
+			"name": "List Single City Detail",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/city/10/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"city",
+						"10",
+						""
+					]
+				},
+				"description": "List City Details by providing primary key in the url as shown - <br>\n        /city/:pk/"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete City",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/city/10/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"city",
+						"10",
+						""
+					]
+				},
+				"description": "Delete City by providing primary key in the url as shown -<br>\n/city/:pk/"
+			},
+			"response": []
+		},
+		{
+			"name": "Update City info",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "city_name",
+							"value": "mumbai",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/city/10/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"city",
+						"10",
+						""
+					]
+				},
+				"description": "Update City Info by providing primary key in url as shown-<br>\n/city/:pk/\n\nParameter required = city_name"
+			},
+			"response": []
+		},
+		{
+			"name": "Get City Weather",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/city/2/weather/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"city",
+						"2",
+						"weather",
+						""
+					]
+				},
+				"description": "Get city weather by providing primary key of city in URL as shown -\n/city/:pk/weather/"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -9,6 +9,7 @@ class CityWeatherSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CityWeather
-        fields = ['city', 'weather', 'recent']
+        fields = ['city', 'weather', 'temperature', 'feels_like',
+                  'temperature_max', 'temperature_min', 'pressure', 'humidity']
     
     

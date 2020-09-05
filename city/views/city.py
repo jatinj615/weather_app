@@ -6,7 +6,13 @@ from rest_framework.response import Response
 
 
 class CityList(generics.ListCreateAPIView):
+    """
+    get:
+        List all the cities according to the filters
     
+    post:
+        Create new city collection
+    """
     queryset = City.objects.all()
     serializer_class = CitySerializer
 
@@ -28,17 +34,17 @@ class CityList(generics.ListCreateAPIView):
     
     def post(self, request):
         city_name = self.request.data['city_name']
-        city_info, weather_list = get_single_city_weather_info(city_name)
-        if city_info:
-            city_serializer = self.get_serializer(data=city_info)
+        weather_obj = get_single_city_weather_info(city_name)
+        if weather_obj:
+            city_serializer = self.get_serializer(data=weather_obj['city_info'])
             city_serializer.is_valid(raise_exception=True)
             city_obj, created = city_serializer.save()
             if created:
-                for weather in weather_list:
+                for weather in weather_obj['weather_list']:
                     weather_serializer = WeatherSerializer(data=weather)
                     weather_serializer.is_valid(raise_exception=True)
                     weather_obj = weather_serializer.save()
-                    city_weather_serializer = CityWeatherSerializer(data={'recent': True})
+                    city_weather_serializer = CityWeatherSerializer(data=weather_obj['temperature_details'])
                     city_weather_serializer.is_valid(raise_exception=True)
                     city_weather_serializer.save(city=city_obj, weather=weather_obj)
                 return Response(self.get_serializer(city_obj).data, status=status.HTTP_201_CREATED)

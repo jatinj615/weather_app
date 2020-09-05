@@ -1,7 +1,6 @@
 from rest_framework import generics, status
 from city.serializers import CitySerializer, WeatherSerializer, CityWeatherSerializer
 from city.models import City, Weather, CityWeather
-from city.utils import get_single_city_weather_info
 from rest_framework.response import Response
 
 

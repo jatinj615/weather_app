@@ -17,4 +17,10 @@ class Weather(models.Model):
 class CityWeather(models.Model):
     city = models.ForeignKey(City, on_delete=models.CASCADE)
     weather = models.ForeignKey(Weather, on_delete=models.CASCADE)
+    temperature = models.CharField(max_length=20, default='', blank=True)
+    feels_like = models.CharField(max_length=20, default='', blank=True)
+    temperature_max = models.CharField(max_length=20, default='', blank=True)
+    temperature_min = models.CharField(max_length=20, default='', blank=True)
+    pressure = models.CharField(max_length=20, default='', blank=True)
+    humidity = models.CharField(max_length=20, default='', blank=True)
     recent = models.BooleanField(default=True)
