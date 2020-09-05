@@ -1,9 +1,17 @@
+import structlog
 from city.serializers import CitySerializer
 import requests
 from django.conf import settings
 from city.models import Weather, CityWeather, City
+from ratelimit import limits, RateLimitException
+from time import sleep
+
+logger = structlog.get_logger(__name__)
+
+RATE_LIMIT_PERIOD = 60  ## time in seconds
 
 
+@limits(calls=60, period=RATE_LIMIT_PERIOD)
 def get_weather_data(city_name=None, city_id=None):
     api_url = settings.SINGLE_CITY_URL
     params = {'appid': settings.WEATHER_API_KEY}
@@ -23,7 +31,11 @@ def get_weather_data(city_name=None, city_id=None):
 
 
 def get_single_city_weather_info(city_name):
-    response = get_weather_data(city_name=city_name)
+    try:
+        response = get_weather_data(city_name=city_name)
+    except RateLimitException as e:
+        logger.info('Exceeded the amount of requests')
+        return None, None
     if response:
         city_result = dict(api_city_id=response['id'],
                            city_name=response['name'],
@@ -46,10 +58,15 @@ def get_city_weather_by_id():
     cities = City.objects.all()
     for city in cities:
         city_id = city.api_city_id
-        response = get_weather_data(city_id=city_id)
+        try:
+            response = get_weather_data(city_id=city_id)
+        except Exception as e:
+            logger.info('Exceeded the amount of requests')
+            sleep(60)
+        
         if response:
             for weather in response['weather']:
-                weather_obj = Weather.objects.get_or_create(weather_id=weather['id'],
+                weather_obj, created = Weather.objects.get_or_create(weather_id=weather['id'],
                                                             weather_main=weather['main'],
                                                             description=weather['description'])
                 city_weather_obj = CityWeather(city=city, weather=weather_obj)

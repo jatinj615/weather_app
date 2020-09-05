@@ -4,7 +4,10 @@ from celery.task.schedules import crontab
 from city.utils import get_city_weather_by_id
 from city.models import CityWeather
 
+logger = structlog.get_logger(__name__)
 
+
+@periodic_task(run_every=crontab(minute='*/10'), name="update_weather")
 def update_city_weather():
     weather_list_obj = get_city_weather_by_id()
     if not weather_list_obj == None:
