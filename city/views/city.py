@@ -9,7 +9,13 @@ class CityList(generics.ListCreateAPIView):
     """
     get:
         List all the cities according to the filters
-    
+        Parameters:
+            -   in: query
+                name: city_name
+                schema:
+                    type: string
+                description: City Name to search city collection
+
     post:
         Create new city collection
     """
@@ -34,17 +40,18 @@ class CityList(generics.ListCreateAPIView):
     
     def post(self, request):
         city_name = self.request.data['city_name']
-        weather_obj = get_single_city_weather_info(city_name)
-        if weather_obj:
-            city_serializer = self.get_serializer(data=weather_obj['city_info'])
+        weather_res = get_single_city_weather_info(city_name)
+        if weather_res:
+            city_serializer = self.get_serializer(data=weather_res['city_info'])
             city_serializer.is_valid(raise_exception=True)
             city_obj, created = city_serializer.save()
+            temperature = weather_res
             if created:
-                for weather in weather_obj['weather_list']:
+                for weather in weather_res['weather_list']:
                     weather_serializer = WeatherSerializer(data=weather)
                     weather_serializer.is_valid(raise_exception=True)
                     weather_obj = weather_serializer.save()
-                    city_weather_serializer = CityWeatherSerializer(data=weather_obj['temperature_details'])
+                    city_weather_serializer = CityWeatherSerializer(data=weather_res['temperature_details'])
                     city_weather_serializer.is_valid(raise_exception=True)
                     city_weather_serializer.save(city=city_obj, weather=weather_obj)
                 return Response(self.get_serializer(city_obj).data, status=status.HTTP_201_CREATED)
