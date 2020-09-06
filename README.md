@@ -21,7 +21,7 @@ At the time of creating new entry in city collection we collect the weather of t
 <br>
 
 ## Installation and Running
-Only prerequisite to run the application is <b>Docker</b> from the official website <a href="https://docs.docker.com/compose/install/">link</a><br>
+Only prerequisite to run the application is <b>Docker</b>. Install from the official website <a href="https://docs.docker.com/compose/install/">link</a><br>
 After installing Docker run the command  <code>docker-compose up</code>.
 
 ### Unit Tests
