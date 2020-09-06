@@ -23,7 +23,7 @@ class CityList(viewsets.ModelViewSet):
         Update information of a particular city in the city collection
     
     destroy:
-        Delete particula city information from the city collection
+        Delete particular city information from the city collection
     """
     
     queryset = City.objects.all()

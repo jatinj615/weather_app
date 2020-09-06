@@ -30,4 +30,4 @@ urlpatterns = [
         extra_context={'schema_url':'openapi-schema'}
     ), name='swagger-ui'),
     path('city/', include('city.urls')),
-]
+] 

@@ -1,0 +1,262 @@
+openapi: 3.0.2
+info:
+  title: Weather APP
+  version: 1.0.0
+  description: API for finding current weather of specified city
+paths:
+  /city/:
+    get:
+      operationId: listCitys
+      description: "List all the cities according to the filters"
+      parameters:
+        - in: query
+          name: city_name
+          schema:
+            type: string
+          description: holds the name of the city
+        - in: query
+          name: latitude
+          schema:
+            type: integer
+          description: holds the latitude
+        - in: query
+          name: longitude
+          schema:
+            type: integer
+          description: holds the longitude
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    city_name:
+                      type: string
+                      maxLength: 100
+                    latitude:
+                      type: string
+                      maxLength: 50
+                    longitude:
+                      type: string
+                      maxLength: 50
+                    api_city_id:
+                      type: string
+                      maxLength: 50
+                  required:
+                  - city_name
+          description: ''
+    post:
+      operationId: createCity
+      description: Insert new city information in the city collection
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id001
+              properties:
+                city_name:
+                  type: string
+                  maxLength: 100
+                latitude:
+                  type: string
+                  maxLength: 50
+                longitude:
+                  type: string
+                  maxLength: 50
+                api_city_id:
+                  type: string
+                  maxLength: 50
+              required:
+              - city_name
+          application/x-www-form-urlencoded:
+            schema: *id001
+          multipart/form-data:
+            schema: *id001
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  city_name:
+                    type: string
+                    maxLength: 100
+                  latitude:
+                    type: string
+                    maxLength: 50
+                  longitude:
+                    type: string
+                    maxLength: 50
+                  api_city_id:
+                    type: string
+                    maxLength: 50
+                required:
+                - city_name
+          description: ''
+  /city/{id}/:
+    get:
+      operationId: retrieveCity
+      description: Get information of a single city from the city collection
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this city.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  city_name:
+                    type: string
+                    maxLength: 100
+                  latitude:
+                    type: string
+                    maxLength: 50
+                  longitude:
+                    type: string
+                    maxLength: 50
+                  api_city_id:
+                    type: string
+                    maxLength: 50
+                required:
+                - city_name
+          description: ''
+    put:
+      operationId: updateCity
+      description: Update information of a particular city in the city collection
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this city.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id002
+              properties:
+                city_name:
+                  type: string
+                  maxLength: 100
+                latitude:
+                  type: string
+                  maxLength: 50
+                longitude:
+                  type: string
+                  maxLength: 50
+                api_city_id:
+                  type: string
+                  maxLength: 50
+              required:
+              - city_name
+          application/x-www-form-urlencoded:
+            schema: *id002
+          multipart/form-data:
+            schema: *id002
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  city_name:
+                    type: string
+                    maxLength: 100
+                  latitude:
+                    type: string
+                    maxLength: 50
+                  longitude:
+                    type: string
+                    maxLength: 50
+                  api_city_id:
+                    type: string
+                    maxLength: 50
+                required:
+                - city_name
+          description: ''
+    delete:
+      operationId: destroyCity
+      description: Delete particular city information from the city collection
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this city.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+  /city/{id}/weather/:
+    get:
+      operationId: listCityWeathers
+      description: Get current weather of a particular city from the city collection
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this city weather.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    city:
+                      type: string
+                      readOnly: true
+                    weather:
+                      properties:
+                        weather_id:
+                          type: string
+                          maxLength: 10
+                        weather_main:
+                          type: string
+                          maxLength: 20
+                        description:
+                          type: string
+                          maxLength: 200
+                      type: object
+                      readOnly: true
+                    temperature:
+                      type: string
+                      maxLength: 20
+                    feels_like:
+                      type: string
+                      maxLength: 20
+                    temperature_max:
+                      type: string
+                      maxLength: 20
+                    temperature_min:
+                      type: string
+                      maxLength: 20
+                    pressure:
+                      type: string
+                      maxLength: 20
+                    humidity:
+                      type: string
+                      maxLength: 20
+          description: ''

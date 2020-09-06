@@ -134,6 +134,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
 
 ## OpenWeatherMap API Key
 WEATHER_API_KEY = '4db0c9bedeaf4835f556513eacc18fe4'
