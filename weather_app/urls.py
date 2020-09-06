@@ -25,7 +25,7 @@ urlpatterns = [
         description="API for finding current weather of specified city",
         version="1.0.0"
     ), name='openapi-schema'),
-    path('', TemplateView.as_view(
+    path('api/swagger/', TemplateView.as_view(
         template_name='swagger-ui.html',
         extra_context={'schema_url':'openapi-schema'}
     ), name='swagger-ui'),
