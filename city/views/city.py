@@ -37,17 +37,20 @@ class CityList(viewsets.ModelViewSet):
 
 
     def get_queryset(self):
-        city_name = str(self.request.query_params.get('city_name', None))
-        latitude = str(self.request.query_params.get('latitude', None))
-        longitude = str(self.request.query_params.get('longitude', None))
+        city_name = self.request.query_params.get('city_name', None)
+        latitude = self.request.query_params.get('latitude', None)
+        longitude = self.request.query_params.get('longitude', None)
         if city_name:
+            city_name=str(city_name)
             queryset = self.queryset.filter(city_name__icontains=city_name)
             return queryset
         elif latitude and longitude:
+            latitude = str(latitude)
+            longitude = str(longitude)
             queryset = self.queryset.filter(latitude__startswith=latitude, longitude__startswith=longitude)
             return queryset
         else:
-            return self.queryset
+            return super().get_queryset()
     
 
     def create(self, request):
