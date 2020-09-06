@@ -22,7 +22,7 @@ from rest_framework.schemas import get_schema_view
 urlpatterns = [
     path('openapi', get_schema_view(
         title="Weather APP",
-        description="API for all things …",
+        description="API for finding current weather of specified city",
         version="1.0.0"
     ), name='openapi-schema'),
     path('', TemplateView.as_view(

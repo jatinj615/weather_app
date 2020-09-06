@@ -1,2 +1,2 @@
-from .city import CityList, CityDetail
+from .city import CityList
 from .weather import WeatherDetailView
