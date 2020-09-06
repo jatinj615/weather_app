@@ -22,8 +22,9 @@ At the time of creating new entry in city collection we collect the weather of t
 
 ## Installation and Running
 Only prerequisite to run the application is <b>Docker</b>. Install from the official website <a href="https://docs.docker.com/compose/install/">link</a><br>
-After installing Docker run the command  <code>docker-compose up -d</code>.
-To view the logs of the containers use the command <code>docker-compose logs</code>.
+After installing Docker run the command - <code>docker-compose up -d</code>, to start the application.<br>
+To view the logs of the containers, use the command - <code>docker-compose logs</code>.<br>
+To close the application, run the command - <code>docker-compose down</code>.
 
 ### Unit Tests
 Unit tests for the endpoints and API can be found in the given path - <code>base_dir/city/tests/</code><br>
