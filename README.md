@@ -3,16 +3,16 @@
 
 ## Usage
 App manages a collection of cities which can be added and deleted. It provides a functionality to list cities in the collection by either providing <b>city name</b> or the <b>coordinates</b> of the city i.e. <b>Latitude and Longitude</b>. User can search for the current weather of any city from the collection.<br>
-Using API service - <a href="https://openweathermap.org/current">OpenWeather API</a> 
+Using API service - <a href="https://openweathermap.org/current" target="_blank">OpenWeather API</a> 
 <br>
 
 ## Technologies Used
-- <a href="https://docs.python.org/3/">Python 3.x</a>
-- Django (<a href="https://www.django-rest-framework.org/">Django Rest Framework</a>)
-- <a href="https://www.postgresql.org/docs/">Postgresql</a>
-- <a href="https://docs.celeryproject.org/en/stable/">Celery</a>
-- <a href="https://redis.io/documentation">Redis</a>
-- <a href="https://docs.docker.com/">Docker</a>
+- <a href="https://docs.python.org/3/" target="_blank">Python 3.x</a>
+- Django (<a href="https://www.django-rest-framework.org/" target="_blank">Django Rest Framework</a>)
+- <a href="https://www.postgresql.org/docs/" target="_blank">Postgresql</a>
+- <a href="https://docs.celeryproject.org/en/stable/" target="_blank">Celery</a>
+- <a href="https://redis.io/documentation" target="_blank">Redis</a>
+- <a href="https://docs.docker.com/" target="_blank">Docker</a>
 <br>
 
 ## Working
@@ -24,7 +24,7 @@ At the time of creating new entry in city collection we collect the weather of t
 <br>
 
 ## Installation and Running
-Only prerequisite to run the application is <b>Docker</b>. Install from the official website <a href="https://docs.docker.com/compose/install/">link</a><br>
+Only prerequisite to run the application is <b>Docker</b>. Install from the official website <a href="https://docs.docker.com/compose/install/" target="_blank">link</a><br>
 
 Instructions to run the application - 
 ```
@@ -48,7 +48,7 @@ Unit tests for the endpoints and API can be found in the given path -
 ```
 - BASE_DIR/city/tests/
 ```
-Test cases are using <a href="https://docs.python.org/3/library/unittest.mock.html"> Python Mocking</a> for the third party APIs.<br>
+Test cases are using <a href="https://docs.python.org/3/library/unittest.mock.html" target="_blank"> Python Mocking</a> for the third party APIs.<br>
 To run the unit tests - 
 ```
 - docker-compose run web python /code/manage.py test city
@@ -56,7 +56,7 @@ To run the unit tests -
 
 ### Swagger Documentation
 
-API swagger documentation can be found at the <a href="https://app.swaggerhub.com/apis/jatinj6159/weather-app/1.0.0#/">link</a>
+API swagger documentation can be found at the <a href="https://app.swaggerhub.com/apis/jatinj6159/weather-app/1.0.0#/" target="_blank">link</a>
 
 
 ## Enhancements To Do
