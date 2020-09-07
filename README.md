@@ -16,25 +16,47 @@ Using API service - <a href="https://openweathermap.org/current">OpenWeather API
 <br>
 
 ## Working
-You can perform CRUD operations on City Collection and also view weather of any city from the collection using API endpoints provided in postman collection file - <code>WeatherApp.postman_collection.json</code>. 
+APP can perform CRUD operations on City Collection and also view weather of any city from the collection using API endpoints provided in postman collection file - 
+```
+- BASE_DIR/WeatherApp.postman_collection.json
+```
 At the time of creating new entry in city collection we collect the weather of the city and then update the weather of all the cities in the collection using periodic task implemented using celery.
 <br>
 
 ## Installation and Running
-Clone the repository usign command - <code>git clone https://github.com/jatinj615/weather_app.git</code>.<br>
 Only prerequisite to run the application is <b>Docker</b>. Install from the official website <a href="https://docs.docker.com/compose/install/">link</a><br>
-After installing Docker run the command - <code>docker-compose up -d</code>, to start the application.<br>
-To view the logs of the containers, use the command - <code>docker-compose logs</code>.<br>
-To close the application, run the command - <code>docker-compose down</code>.
+
+Instructions to run the application - 
+```
+- git clone https://github.com/jatinj615/weather_app.git      ## Clone the repository
+- cd weather_app/                                             ## Change working directory
+- docker-compose up -d                                        ## Start the docker container
+```
+To view the logs of the containers - 
+```
+- docker-compose logs
+```
+To close the application - 
+```
+- docker-compose down
+```
+
+
 
 ### Unit Tests
-Unit tests for the endpoints and API can be found in the given path - <code>base_dir/city/tests/</code>.<br>
+Unit tests for the endpoints and API can be found in the given path - 
+```
+- BASE_DIR/city/tests/
+```
 Test cases are using <a href="https://docs.python.org/3/library/unittest.mock.html"> Python Mocking</a> for the third party APIs.<br>
-To run the unit tests execute the command - <br><code>docker-compose run web python /code/manage.py test city</code>.<br>
+To run the unit tests - 
+```
+- docker-compose run web python /code/manage.py test city
+```
 
 ### Swagger Documentation
 
-After starting the server, API swagger documentation can be found at the endpoint <code>/api/swagger/</code>. <a href="http://localhost:8000/api/swagger/">link</a>
+API swagger documentation can be found at the <a href="https://app.swaggerhub.com/apis/jatinj6159/weather-app/1.0.0#/">link</a>
 
 
 ## Enhancements To Do
