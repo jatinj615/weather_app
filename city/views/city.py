@@ -42,12 +42,12 @@ class CityList(viewsets.ModelViewSet):
         longitude = self.request.query_params.get('longitude', None)
         if city_name:
             city_name=str(city_name)
-            queryset = self.queryset.filter(city_name__icontains=city_name)
+            queryset = City.objects.filter(city_name__icontains=city_name)
             return queryset
         elif latitude and longitude:
             latitude = str(latitude)
             longitude = str(longitude)
-            queryset = self.queryset.filter(latitude__startswith=latitude, longitude__startswith=longitude)
+            queryset = City.objects.filter(latitude__startswith=latitude, longitude__startswith=longitude)
             return queryset
         else:
             return super().get_queryset()

@@ -25,6 +25,7 @@ def get_weather_data(city_name=None, city_id=None):
         return False
 
     response = requests.get(api_url, params=params)
+    
     if response.status_code == 200:
         return response.json()
     else:

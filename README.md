@@ -21,16 +21,23 @@ At the time of creating new entry in city collection we collect the weather of t
 <br>
 
 ## Installation and Running
+Clone the repository usign command - <code>git clone https://github.com/jatinj615/weather_app.git</code>.<br>
 Only prerequisite to run the application is <b>Docker</b>. Install from the official website <a href="https://docs.docker.com/compose/install/">link</a><br>
 After installing Docker run the command - <code>docker-compose up -d</code>, to start the application.<br>
 To view the logs of the containers, use the command - <code>docker-compose logs</code>.<br>
 To close the application, run the command - <code>docker-compose down</code>.
 
 ### Unit Tests
-Unit tests for the endpoints and API can be found in the given path - <code>base_dir/city/tests/</code><br>
-To run the unit tests execute the command - <br><code>docker-compose run web python /code/manage.py test city</code>
+Unit tests for the endpoints and API can be found in the given path - <code>base_dir/city/tests/</code>.
+Test cases are using <a href="https://docs.python.org/3/library/unittest.mock.html"> Python Mocking</a> for the third party APIs.<br>
+To run the unit tests execute the command - <br><code>docker-compose run web python /code/manage.py test city</code>.<br>
 
 ### Swagger Documentation
 Api swagger documentation can be found at the endpoint <code>/api/swagger/</code>. <a href="http://localhost:8000/api/swagger/">link</a>
+
+
+## Enhancements To Do
+Django application uses <b>WSGI</b> server by default which means it can only serve one request at a time which can cause in response delay for concurrent requests made to the application. Therefore, to overcome this scenario we can configure our django application to use <b>uWSGI</b> server which can process multiple requests at once and make changes to docker file accordingly.<br>
+
 
 
