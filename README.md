@@ -28,12 +28,13 @@ To view the logs of the containers, use the command - <code>docker-compose logs<
 To close the application, run the command - <code>docker-compose down</code>.
 
 ### Unit Tests
-Unit tests for the endpoints and API can be found in the given path - <code>base_dir/city/tests/</code>.
+Unit tests for the endpoints and API can be found in the given path - <code>base_dir/city/tests/</code>.<br>
 Test cases are using <a href="https://docs.python.org/3/library/unittest.mock.html"> Python Mocking</a> for the third party APIs.<br>
 To run the unit tests execute the command - <br><code>docker-compose run web python /code/manage.py test city</code>.<br>
 
 ### Swagger Documentation
-Api swagger documentation can be found at the endpoint <code>/api/swagger/</code>. <a href="http://localhost:8000/api/swagger/">link</a>
+
+After starting the server, API swagger documentation can be found at the endpoint <code>/api/swagger/</code>. <a href="http://localhost:8000/api/swagger/">link</a>
 
 
 ## Enhancements To Do
