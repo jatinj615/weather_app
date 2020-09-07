@@ -56,7 +56,7 @@ To run the unit tests -
 
 ### Swagger Documentation
 
-API swagger documentation can be found at the <a href="https://app.swaggerhub.com/apis/jatinj6159/weather-app/1.0.0#/" target="_blank">link</a>
+API swagger documentation can be found at the <a href="https://app.swaggerhub.com/apis-docs/jatinj6159/weather-app/1.0.0" target="_blank">link</a>
 
 
 ## Enhancements To Do
